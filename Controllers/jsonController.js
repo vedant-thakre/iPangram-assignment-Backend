@@ -2,6 +2,9 @@ import { readJsonFile, writeJsonFile } from "../Utils/helper.js";
 
 export const getAllData = async (req, res) => {
   const jsonData = await readJsonFile();
+   if (data.length === 0) {
+     return res.status(404).json({ message: "Data not found" });
+   }
   res.json(jsonData);
 };
 
