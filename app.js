@@ -3,10 +3,11 @@ import jsonRouter from "./Routes/jsonRoutes.js";
 import cors from "cors";
 import dotenv from "dotenv";
 
-export const app = express();
 dotenv.config();
+export const app = express();
 
-// Middleware to enable CORS
+// Middleware to parse JSON data
+app.use(express.json());
 app.use(
   cors({
     origin: [process.env.FRONTEND_URL],
@@ -15,8 +16,7 @@ app.use(
   })
 );
 
-// Middleware to parse JSON data
-app.use(express.json());
+
 
 // Route setup
 app.use("/api/json", jsonRouter);
